@@ -1,0 +1,11 @@
+set -x
+astyle="~/github/devbin/astyle"
+formate='--style=allman --indent=spaces=4 --indent-switches --indent-cases --indent-namespaces --break-blocks --pad-oper --unpad-paren --delete-empty-lines --convert-tabs --mode=c'
+formate="--style=ansi  --convert-tabs --delete-empty-lines --mode=c --indent=spaces=4"
+#--style=ansi  --convert-tabs --delete-empty-lines -p -H --mode=c -M120"
+for i in $@
+do
+    cd $(pwd)/$i
+    find ./ -name "*.cpp" -o -name "*.h" |grep -v '\.pb\.h' |xargs -i $astyle $formate {}
+    cd ..
+done

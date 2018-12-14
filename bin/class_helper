@@ -1,0 +1,15 @@
+#!/bin/bash
+if [[ $# -lt 1 ]]; then
+    echo "need params"
+    exit
+fi
+class_name=$1
+shift
+if [[ $# -ge 1 ]]; then
+    space_name=$1
+else
+    #space_name="storage"
+    echo "null space_name"
+fi
+python ~/github/codinghelper/coding_helper.py --class_name=$class_name \
+--space_name=$space_name --company=Sogou --author_nickname=Ray --author_email=liyangrui@sogou-inc.com
